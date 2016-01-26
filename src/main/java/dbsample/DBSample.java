@@ -28,7 +28,7 @@ public class DBSample {
       String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
        String username = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
         String password = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-        String name ="dbsamle";
+        String name ="dbsample";
         String url ="jdbc:mysql://" +host + ":" + port + "/" +name;
         
            return DriverManager.getConnection(url, username, password);
@@ -42,9 +42,9 @@ public class DBSample {
            Statement stmt=conn.createStatement();
            ResultSet rs= stmt.executeQuery("Select * from people");
            while(rs.next()){
-               String name = rs.getString("name");
-               String age = rs.getString("bio");
-               output+="<p>" +name +":"   +"</p>";
+             output +="<h1>"+rs.getString("name")+ "</h1>";
+              output +="<p>"+rs.getString("bio")+ "</p>";
+             
            }
            conn.close();
        } catch (SQLException ex) {
